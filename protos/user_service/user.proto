@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+package user;
+
+option go_package = "user";
+
+service UserService {
+    rpc Create(User) returns (User);
+    rpc GetById(GetByIdRequest) returns (User);
+    rpc GetByFirstName(GetByFirstNameRequest) returns (User);
+    rpc GetByLastName(GetByLastNameRequest) returns (User);
+    rpc GetByPhoneNumber(GetByPhoneNumberRequest) returns (User);
+    rpc GetAll(GetAllRequest) returns (AllUsers);
+    rpc UpdateUser(User) returns (User);
+    rpc DeleteUser(GetByIdRequest) returns (User);
+}
+
+message User {
+    string id = 1;                 // Unique identifier for the user
+    int32 user_order = 2;          // Order of the user
+    string first_name = 3;         // First name of the user
+    string last_name = 4;          // Last name of the user
+    string phone_number = 5;       // Phone number of the user
+    string password = 6;           // Password of the user
+    string gender = 7;        // Gender of the user
+    string created_at = 8;         // Timestamp for when the user was created
+    string updated_at = 9;         // Timestamp for when the user was last updated
+}
+
+message GetByIdRequest {
+    string id = 1;                 // ID of the user to retrieve
+}
+
+message GetAllRequest {
+    string page = 1;               // Page number for pagination
+    string limit = 2;              // Limit for the number of users per page
+}
+
+message AllUsers {
+    repeated User users = 1;      
+}
+
+message GetByFirstNameRequest {
+    string first_name = 1;         
+}
+
+message GetByLastNameRequest {
+    string last_name = 1;          
+}
+
+message GetByPhoneNumberRequest {
+    string phone_number = 1;       
+}
