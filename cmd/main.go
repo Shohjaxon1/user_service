@@ -7,8 +7,7 @@ import (
 	pb "user_service/genproto/user_service"
 	"user_service/pkg/db"
 	"user_service/pkg/logger"
-	user_service "user_service/service" // Rename the package to avoid conflict
-
+	user_service "user_service/service"
 	"google.golang.org/grpc"
 )
 
